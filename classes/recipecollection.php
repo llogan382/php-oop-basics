@@ -36,9 +36,18 @@ class RecipeCollection
 
     public function getCombinedIngredients() {
         $ingredients = array();
-        foreach($this->recipes as $recipe){
-            foreach($recipe->getIngredients as $ing ){
-                $ingredients[$ing["item"]] = array(
+        foreach($this->recipes as $recipe) {
+            foreach ($recipe->getIngredients() as $ing) {
+                $item = $ing["item"];
+                if (strpos($item, ",")) {
+                    $item = strstr($item, ",", true);
+                }
+                if (substr($item, -1) == "s" && array_key_exists(rtrim($item, "s"), $ingredients)) {
+                    $item = rtrim($item, "s");
+                } else if (array_key_exists($item . "s", $ingredients)) {
+                        $item .= "s";
+                    }
+                $ingredients[$item] = array(
                     $ing["amount"],
                     $ing["measure"]
                 );
