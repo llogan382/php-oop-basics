@@ -33,4 +33,17 @@ class RecipeCollection
       }
       return $taggedRecipes;
     }
+
+    public function getCombinedIngredients() {
+        $ingredients = array();
+        foreach($this->recipes as $recipe){
+            foreach($recipe->getIngredients as $ing ){
+                $ingredients[$ing["item"]] = array(
+                    $ing["amount"],
+                    $ing["measure"]
+                );
+            }
+        }
+        return $ingredients;
+    }
 }
