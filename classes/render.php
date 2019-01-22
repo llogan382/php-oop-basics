@@ -8,6 +8,12 @@ class Render
         $output .= implode("\n", get_class_methods(__CLASS__));
         return $output;
     }
+
+    public static function listShopping($ingredients)
+    {
+        ksort($ingredient_list);
+        return implode("\n", array_keys($ingredient_list));
+    }
     
     public static function listIngredients($ingredients)
     {
