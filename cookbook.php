@@ -28,4 +28,5 @@ $breakfast = new RecipeCollection("Favorite Breakfasts");
 foreach($cookbook->filterByTag("breakfast") as $recipe) {
     $breakfast->addRecipe($recipe);
 }
-echo Render::listShopping($breakfast->getCombinedIngredients()); 
+echo Render::listRecipes($cookbook->getRecipeTitles());
+// echo Render::listShopping($breakfast->getCombinedIngredients()); 
