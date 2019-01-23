@@ -42,6 +42,13 @@ class Render
     
     public static function listRecipes($titles)
     {
-        return implode("\n",$titles);
+        asort($titles);
+        $output = "";
+        foreach ($titles as $key => $title) {
+            if($output != "") {
+                $output .= "[$key] $title";
+            }
+        }
+        return $output;
     }
 }
