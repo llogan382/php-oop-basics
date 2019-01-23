@@ -55,4 +55,8 @@ class RecipeCollection
         }
         return $ingredients;
     }
+
+    public function filterById($id) {
+        return $this->recipes[$id];
+    }
 }

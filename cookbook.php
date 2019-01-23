@@ -28,5 +28,14 @@ $breakfast = new RecipeCollection("Favorite Breakfasts");
 foreach($cookbook->filterByTag("breakfast") as $recipe) {
     $breakfast->addRecipe($recipe);
 }
-echo Render::listRecipes($cookbook->getRecipeTitles());
-// echo Render::listShopping($breakfast->getCombinedIngredients()); 
+// echo Render::displayRecipe($cookbook->filterById(2));
+
+$week1 = new RecipeCollection("meal plan week 1");
+$week1->addRecipe($cookbook->filterById(2));
+$week1->addRecipe($cookbook->filterById(3));
+$week1->addRecipe($cookbook->filterById(6));
+$week1->addRecipe($cookbook->filterById(16));
+
+
+echo Render::listRecipes($week1->getRecipeTitles()); 
+echo Render::listShopping($week1->getCombinedIngredients());
