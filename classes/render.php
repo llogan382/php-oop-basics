@@ -46,8 +46,10 @@ class Render
         $output = "";
         foreach ($titles as $key => $title) {
             if($output != "") {
-                $output .= "[$key] $title";
+                $output .= "\"";
             }
+            $output .= "[$key] $title";
+
         }
         return $output;
     }
